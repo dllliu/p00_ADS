@@ -1,1 +1,4 @@
-topherM -- 1999-12-31 23:59
+DanielL -- 2022-11-02 20:17
+Initialized submodule with all necessary materials like flag and file structure. Update structure of HTML table leading to content page in Design Doc based on suggestions. 
+More detailed description of updating data.
+

@@ -1,4 +1,3 @@
-# ADS
-# Daniel Liu, Sam Lubelsky, Ayman Habib
+# ADS by Daniel Liu, Sam Lubelsky, Ayman Habib
 # Collaborative Storytelling Website 
 # Launch Codes
