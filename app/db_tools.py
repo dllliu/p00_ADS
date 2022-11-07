@@ -1,3 +1,4 @@
+from re import T
 import sqlite3
 
 DB_FILE = "data.db"
@@ -18,7 +19,30 @@ def get_table_list(tableName):
     res = c.execute(f"SELECT * from {tableName}")
     return res.fetchall()
 #add data row to sqlTable, put row in list format
-def add_row(tableName, row):
-    c.execute(f"INSERT INTO {tableName} VALUES({"?," for _ in range(len(row) - 1)})")
+def add_account(username, password):
+    c.execute("INSERT INTO UserInfo (username, password) VALUES (?, ?);", (username, password))
+def add_story(storyName, newText, contributor):
+    c.execute("INSERT INTO StoryInfo VALUES (?, ?, ?, ?)", (storyName, newText, newText, contributor))
+def get_story_info(storyName):
+    storyInfo = get_table_list()
+    targetStory = storyInfo[storyInfo.find(storyName)]
+    return targetStory[1:]
+def edit_story(storyName, newText, contributor):
+    storyInfo = get_story_info(storyName)
+    fullText = storyInfo[0] + newText
+    contributors = contributor + "," + storyInfo[2] 
+    c.execute(f'''
+    UPDATE storyInfo
+    SET fullStory = {fullText},
+    lastAdded = {newText},
+    Contributors = {contributors}
+    WHERE
+    storyName = {storyName}
+    ''')
 
-get_stories_list()
+#add_story("beeInfo", "bees are cool", "SamLublsky")
+edit_story("beeInfo")
+print(get_table_list("storyInfo"))
+
+db.commit()
+db.close()
