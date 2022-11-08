@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+    <head>
+
+    </head>
+    <body>
+      <h1> Add To {{storyName}}: </h1>
+      <p> {{storyText}}</p>  
+      <form action="/addToStory" method="POST">
+        New Text: <input type="text" name="NewText">
+        <br>
+        Confirm Addition: <input type="submit" name="Confirm Addititon">
+      </form>
+    </body>
+</html>
