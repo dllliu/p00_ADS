@@ -2,3 +2,6 @@ DanielL -- 2022-11-02 20:17
 Initialized submodule with all necessary materials like flag and file structure. Update structure of HTML table leading to content page in Design Doc based on suggestions. 
 More detailed description of updating data.
 
+
+SamuelL -- 2022-11-08 4:38
+Merged my devTools branch with main.  The db_tools.py file now contains all the functions necessary for reading and writing to the sqlite database.  The database should be read and written to using solely these functions.  They seem to be fully working based on my tests.
