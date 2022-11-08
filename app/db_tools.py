@@ -41,8 +41,8 @@ def edit_story(storyName, newText, contributor):
     ''')
 
 #add_story("beeInfo", "bees are cool", "SamLublsky")
-edit_story("beeInfo")
-print(get_table_list("storyInfo"))
+#edit_story("beeInfo")
+#print(get_table_list("storyInfo"))
 
 db.commit()
 db.close()
