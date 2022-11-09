@@ -64,7 +64,7 @@ def get_story_info(storyName):
     return -1
 #edit story
 def edit_story(storyName, newText, contributor):
-    if(story_exists(storyName)):
+    if story_exists(storyName):
         storyInfo = get_story_info(storyName)
         fullText = storyInfo[0] + newText
         contributors = contributor + "," + storyInfo[2] 
