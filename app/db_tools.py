@@ -3,7 +3,7 @@ import sqlite3
 
 DB_FILE = "data.db"
 
-db = sqlite3.connect(DB_FILE)
+db = sqlite3.connect(DB_FILE, check_same_thread=False) #sqlite3.connect(DB_FILE)
 c = db.cursor()
 
 stories_header = "(storyName TEXT, fullStory TEXT, lastAdded TEXT, Contributors TEXT)"
@@ -25,6 +25,7 @@ def add_account(username, password):
         c.execute("INSERT INTO UserInfo (username, password) VALUES (?, ?);", (username, password))
     else:
         return -1
+
 def account_exists(username):
     accounts = get_table_list("UserInfo")
     for account in accounts:
@@ -88,4 +89,4 @@ def edit_story(storyName, newText, contributor):
 
 
 db.commit()
-db.close()
+#db.close()
