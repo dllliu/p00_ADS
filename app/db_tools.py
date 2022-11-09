@@ -50,7 +50,7 @@ def story_exists(storyName):
 #add new story to db
 #if a story with that name already exists 
 def add_story(storyName, newText, contributor):
-    if not(story_exists):
+    if not(story_exists(storyName)):
         c.execute("INSERT INTO StoryInfo VALUES (?, ?, ?, ?)", (storyName, newText, newText, contributor))
     else:
         return -1
@@ -78,14 +78,25 @@ def edit_story(storyName, newText, contributor):
         ''')
     else:
         return -1
+def get_user_stories(username):
+    viewable_stories = []
+    editable_stories = []
+    stories = get_table_list("StoryInfo")
+    for story in stories:
+        contributors = story[3].split(",")
+        if username in contributors:
+            viewable_stories.append(story[0])
+        else:
+            editable_stories.append(story[0])
+    return viewable_stories, editable_stories
 
-#add_story("beeInfo", "bees are cool", "SamLublsky")
+add_story("beesInfo", "bees are cool", "AymanLublsky")
 # print(edit_story("beeInfo", ".  I hate bees :(", "Ayman"))
-# print(get_table_list("storyInfo"))
+print(get_table_list("storyInfo"))
 #print(verify_account("hello", "world"))
 #print(add_account("my", "name"))
 #print(get_table_list("UserInfo"))
-
+print(get_user_stories("SamLublsky"))
 
 db.commit()
 db.close()
