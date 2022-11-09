@@ -3,5 +3,8 @@ Initialized submodule with all necessary materials like flag and file structure.
 More detailed description of updating data.
 
 
-SamuelL -- 2022-11-08 4:38
+SamuelL -- 2022-11-08 16:38
 Merged my devTools branch with main.  The db_tools.py file now contains all the functions necessary for reading and writing to the sqlite database.  The database should be read and written to using solely these functions.  They seem to be fully working based on my tests.
+
+SamuelL -- 2022-11-09 9:51
+Added More to db_tools.py.  Added some routing in __init__ and created and edited some of our html templates.

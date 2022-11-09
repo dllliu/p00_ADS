@@ -18,5 +18,11 @@ app.secret_key = os.urandom(32)
 @app.route("/addToStory")
 def addToStory():
     newText = request.form.get("NewText")
+
+@app.route("/home")
+def home():
+    userIn = request.form.get('username')
+    passIn = request.form.get('password')
     
+    return render_template("home.html", username = userIn)
 
