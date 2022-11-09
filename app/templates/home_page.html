@@ -1,0 +1,39 @@
+<head>
+    <title> HOME PAGE </title>
+  </head>
+
+  <body>
+    <h1>
+      STORY TELLING WITH ADS
+    </h1>
+    <h2>
+       There are only three types of people. Scribes, Editors, or Viewers.
+    </h2>
+
+    <h3>
+        Welcome, {{username}}!
+    </h3>
+
+    <form action="/logout">
+        <input type="submit" value="logout" />
+    </form>
+
+    <p>
+       A collection of stories that you can create, edit, view... Stories will be arranged with edit, create, and view button below each orgamized in a column.
+    </p>
+    
+    <form action="/view" method = "POST">
+       <input type="submit" value="View Story">
+    </form>
+
+    <form action="/create" method = "POST">
+        <input type="submit" value="Create Story">
+     </form>
+
+     <form action="/edit" method = "POST">
+        <input type="submit" value="Edit Story">
+     </form>
+
+  </body>
+
+</html>
