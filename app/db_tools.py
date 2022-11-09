@@ -86,5 +86,6 @@ def edit_story(storyName, newText, contributor):
 #print(add_account("my", "name"))
 #print(get_table_list("UserInfo"))
 
+
 db.commit()
 db.close()
