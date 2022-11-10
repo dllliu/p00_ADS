@@ -3,26 +3,40 @@ import sqlite3
 
 DB_FILE = "data.db"
 
-db = sqlite3.connect(DB_FILE, check_same_thread=False) #sqlite3.connect(DB_FILE)
-c = db.cursor()
+#db = sqlite3.connect(DB_FILE, check_same_thread=False) #sqlite3.connect(DB_FILE)
+#c = db.cursor()
 
 stories_header = "(storyName TEXT, fullStory TEXT, lastAdded TEXT, Contributors TEXT)"
 users_header = ("(username TEXT, password TEXT)")
-
+def query(sql, extra = None):
+    db = sqlite3.connect(DB_FILE, check_same_thread=False)
+    c = db.cursor()
+    if extra is None:
+        res = c.execute(sql)
+    else:
+        res = c.execute(sql, extra)
+    db.commit()
+    db.close()
+    return res
 def create_table(name, header):
-    c.execute(f"CREATE TABLE IF NOT EXISTS {name} {header}")
+    query(f"CREATE TABLE IF NOT EXISTS {name} {header}")
 
 create_table("StoryInfo", stories_header)
 create_table("UserInfo", users_header)
 
 def get_table_list(tableName):
+    db = sqlite3.connect(DB_FILE, check_same_thread=False)
+    c = db.cursor()
     res = c.execute(f"SELECT * from {tableName}")
-    return res.fetchall()
+    out = res.fetchall()
+    db.commit()
+    db.close()
+    return out
 #add data row to sqlTable, put row in list format
 #if username already in db returns -1
 def add_account(username, password):
     if not(account_exists(username)):
-        c.execute("INSERT INTO UserInfo (username, password) VALUES (?, ?);", (username, password))
+        query("INSERT INTO UserInfo (username, password) VALUES (?, ?);", (username, password))
     else:
         return -1
 
@@ -52,7 +66,7 @@ def story_exists(storyName):
 #if a story with that name already exists 
 def add_story(storyName, newText, contributor):
     if not(story_exists(storyName)):
-        c.execute("INSERT INTO StoryInfo VALUES (?, ?, ?, ?)", (storyName, newText, newText, contributor))
+        query("INSERT INTO StoryInfo VALUES (?, ?, ?, ?)", (storyName, newText, newText, contributor))
     else:
         return -1
 #return fullText, lastAdded, and contributors of a story
@@ -69,7 +83,7 @@ def edit_story(storyName, newText, contributor):
         storyInfo = get_story_info(storyName)
         fullText = storyInfo[0] + newText
         contributors = contributor + "," + storyInfo[2] 
-        c.execute(f'''
+        query(f'''
         UPDATE storyInfo
         SET fullStory = "{fullText}",
         lastAdded = "{newText}",
@@ -91,7 +105,7 @@ def get_user_stories(username):
             editable_stories.append(story[0])
     return viewable_stories, editable_stories
 
-add_story("beesInfo", "bees are cool", "AymanLublsky")
+#add_story("beesInfo", "bees are cool", "AymanLublsky")
 # print(edit_story("beeInfo", ".  I hate bees :(", "Ayman"))
 #print(get_table_list("storyInfo"))
 #print(verify_account("hello", "world"))
@@ -99,5 +113,5 @@ add_story("beesInfo", "bees are cool", "AymanLublsky")
 #print(get_table_list("UserInfo"))
 #print(get_user_stories("SamLublsky"))
 
-db.commit()
+#db.commit()
 #db.close()

@@ -11,14 +11,10 @@ import db_tools
 
 app = Flask(__name__)    #create Flask object
 app.secret_key = os.urandom(32)
-
-username = "ads"
-password = "admin"
-
 @app.route('/')
 def index():
     if 'username' in session:
-        return render_template('home_page.html',username = session['username'])
+        return redirect("/home")
     return render_template('login.html') #edit
 
 @app.route('/login', methods = ['GET','POST'])
@@ -27,11 +23,12 @@ def login():
     #otherwise redirect to error page which will have a button linking to the login page
     username = request.form.get('username')
     password = request.form.get('password')
-    if db_tools.add_account(username,password) != -1 and db_tools.verify_account(username,password):
-        resp = make_response(render_template('home_page.html'))
-        return resp
+    if db_tools.verify_account(username,password):
+        session['username'] = username
+        session['password'] = password
+        return redirect("/home")
     else:
-        resp = make_response(render_template('error.html',msg = "the username already exists, please go back to login"))
+        resp = make_response(render_template('error.html',msg = "username or password is not correct"))
         return resp
 
 
@@ -42,21 +39,19 @@ def create_account():
         session['username'] = request.form['username']
         return redirect(url_for('index'))
     '''
+    print("creating account")
     if request.method == 'POST':
         userIn = request.form.get('username')
         passIn = request.form.get('password') 
-        print(userIn)
-        print(passIn)
-        if(userIn != username):
-            resp = make_response(render_template("error.html", msg = "wrong username"),404)
-            return resp
-        elif passIn != password:
-            resp = make_response(render_template("error.html", msg = "wrong password"),404)
-            return resp
+        #print(userIn)
+        #print(passIn)
+        if db_tools.add_account(userIn, passIn) == -1:
+            return f"account with username {userIn} already exists"
         else:
-            session['username'] = request.form['username']
-            resp = render_template('response.html',username = session['username'])
-            return resp
+            return f"Successfully added {userIn}"
+            #return redirect("/login")
+
+        return resp
     return redirect(url_for('index'))
 @app.route('/logout')
 def logout():
@@ -66,15 +61,19 @@ def logout():
 
 @app.route('/home')
 def home():
-    storyName = "beeInfo"
-    username = "SamLublsky"
-    viewable_pages, editable_pages = db_tools.get_user_stories(username)[0], db_tools.get_user_stories(username)[1]
-    print(viewable_pages)
-    return render_template("home_page.html", 
-    viewable_stories = viewable_pages, editable_stories = editable_pages)
-    
+    username = session['username']
+    password = session['password']
+    if db_tools.verify_account(username, password):
+        viewable_pages, editable_pages = db_tools.get_user_stories(username)[0], db_tools.get_user_stories(username)[1]
+        print(viewable_pages)
+        return render_template("home_page.html", username = username,
+        viewable_stories = viewable_pages, editable_stories = editable_pages)
+        
     
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
     app.debug = True 
+    print(db_tools.get_table_list("UserInfo"))
     app.run()
+    #db.commit()
+    #db.close()
