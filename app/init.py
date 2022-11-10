@@ -61,7 +61,7 @@ def logout():
 
 @app.route('/home')
 def home():
-    if username not in session:
+    if 'username' not in session:
         return redirect("/login")
     username = session['username']
     password = session['password']
