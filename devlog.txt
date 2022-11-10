@@ -2,6 +2,8 @@ DanielL -- 2022-11-02 20:17
 Initialized submodule with all necessary materials like flag and file structure. Update structure of HTML table leading to content page in Design Doc based on suggestions. 
 More detailed description of updating data.
 
+DanielL -- 2022-11-07 09:55
+Make HTML Templates for Login, Response, and Story Template. 
 
 SamuelL -- 2022-11-08 16:38
 Merged my devTools branch with main.  The db_tools.py file now contains all the functions necessary for reading and writing to the sqlite database.  The database should be read and written to using solely these functions.  They seem to be fully working based on my tests.
@@ -15,3 +17,5 @@ Worked on homepage html template and flask routing for homepage.  Is mostly work
 SamuelL -- 2022-11-09 21:12
 Made a lot of changes to flask py routing and account handling.  Also fixed up db_tools.py and changed how database access is managed
 
+DanielL -- 2022-11-09 22:16
+Add requirements and launch codes in read me. Updated file name for app.py according to site.  Login works. Debugged error with closing database.
