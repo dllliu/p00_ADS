@@ -31,7 +31,7 @@
     <h1> New Stories </h1>
     {% for page in editable_stories %}
     {{page}}
-    <form action="/edit" method = "POST">
+    <form action="/edit">
        <input type="submit" value="Edit Story">
     </form>
     {% endfor %}

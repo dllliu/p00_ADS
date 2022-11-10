@@ -73,11 +73,24 @@ def home():
 
 @app.route('/edit')
 def edit():
-    return request.form
+    storyName = "beeInfo"
+    storyInfo = db_tools.get_story_info(storyName)
+    #return str(storyInfo)
+    lastAdded = storyInfo[1]
+    contributors = storyInfo[2].split(",")
+    if 'username' in session and 'password' in session:
+        if db_tools.verify_account(session['username'], session['password']):
+            if session['username'] not in contributors:
+                resp = render_template('edit.html', storyName = storyName, storyText = lastAdded)
+            else:
+                return redirect("/")
+        else:
+            return redirect("/")
+    return redirect("/")
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
     app.debug = True 
-    print(db_tools.get_table_list("UserInfo"))
+    print(db_tools.get_table_list("StoryInfo"))
     app.run()
     #db.commit()
     #db.close()
