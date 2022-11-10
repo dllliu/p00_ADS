@@ -61,6 +61,8 @@ def logout():
 
 @app.route('/home')
 def home():
+    if username not in session:
+        return redirect("/login")
     username = session['username']
     password = session['password']
     if db_tools.verify_account(username, password):
@@ -68,8 +70,10 @@ def home():
         print(viewable_pages)
         return render_template("home_page.html", username = username,
         viewable_stories = viewable_pages, editable_stories = editable_pages)
-        
-    
+
+@app.route('/edit')
+def edit():
+    return request.form
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
     app.debug = True 
