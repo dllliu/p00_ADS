@@ -8,3 +8,6 @@ Merged my devTools branch with main.  The db_tools.py file now contains all the 
 
 SamuelL -- 2022-11-09 9:51
 Added More to db_tools.py.  Added some routing in __init__ and created and edited some of our html templates.
+
+SamuelL -- 2022-11-09 19:23
+Worked on homepage html template and flask routing for homepage.  Is mostly working now though it lacks integration with user account systems.
