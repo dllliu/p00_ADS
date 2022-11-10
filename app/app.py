@@ -35,7 +35,6 @@ def login():
         return resp
 
 
->>>>>>> 9c30e6a8f7296b0a0a602338eb82021473ebb0b5
 @app.route('/create_account', methods=['GET', 'POST'])
 def create_account():
     '''
