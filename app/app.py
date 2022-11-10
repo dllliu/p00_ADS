@@ -2,6 +2,7 @@ from flask import Flask             #facilitate flask webserving
 from flask import render_template, request   #facilitate jinja templating
 from flask import session, redirect, url_for, make_response        #facilitate form submission
 import os 
+import db_tools
 
 #the conventional way:
 #from flask import Flask, render_template, request
@@ -18,13 +19,23 @@ password = "admin"
 def index():
     if 'username' in session:
         return render_template('home_page.html',username = session['username'])
-    return render_template('login.html')
+    return render_template('login.html') #edit
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods = ['GET','POST'])
 def login():
     #Check if it already exists in database and render home page if it does
     #otherwise redirect to error page which will have a button linking to the login page
-    pass
+    username = request.form.get('username')
+    password = request.form.get('password')
+    if db_tools.add_account(username,password) != -1 and db_tools.verify_account(username,password):
+        resp = make_response(render_template('home_page.html'))
+        return resp
+    else:
+        resp = make_response(render_template('error.html',msg = "the username already exists, please go back to login"))
+        return resp
+
+
+>>>>>>> 9c30e6a8f7296b0a0a602338eb82021473ebb0b5
 @app.route('/create_account', methods=['GET', 'POST'])
 def create_account():
     '''
