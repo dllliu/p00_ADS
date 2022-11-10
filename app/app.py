@@ -67,8 +67,11 @@ def logout():
 @app.route('/home')
 def home():
     storyName = "beeInfo"
-    username = "SamLubelsky"
-    return render_template("home_page.html", viewable_pages = db_tools.get_user_stories(username))
+    username = "SamLublsky"
+    viewable_pages, editable_pages = db_tools.get_user_stories(username)[0], db_tools.get_user_stories(username)[1]
+    print(viewable_pages)
+    return render_template("home_page.html", 
+    viewable_stories = viewable_pages, editable_stories = editable_pages)
     
     
 if __name__ == "__main__": #false if this file imported as module

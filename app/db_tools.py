@@ -93,11 +93,11 @@ def get_user_stories(username):
 
 add_story("beesInfo", "bees are cool", "AymanLublsky")
 # print(edit_story("beeInfo", ".  I hate bees :(", "Ayman"))
-print(get_table_list("storyInfo"))
+#print(get_table_list("storyInfo"))
 #print(verify_account("hello", "world"))
 #print(add_account("my", "name"))
 #print(get_table_list("UserInfo"))
-print(get_user_stories("SamLublsky"))
+#print(get_user_stories("SamLublsky"))
 
 db.commit()
 #db.close()
