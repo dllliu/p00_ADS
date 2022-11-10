@@ -24,7 +24,7 @@ def index():
 def login():
     #Check if it already exists in database and render home page if it does
     #otherwise redirect to error page which will have a button linking to the login page
-
+    pass
 @app.route('/create_account', methods=['GET', 'POST'])
 def create_account():
     '''
@@ -48,13 +48,18 @@ def create_account():
             resp = render_template('response.html',username = session['username'])
             return resp
     return redirect(url_for('index'))
-
 @app.route('/logout')
 def logout():
     # remove the username from the session if it's there
     session.pop('username', None)
     return redirect(url_for('index'))
 
+@app.route('/home')
+def home():
+    storyName = "beeInfo"
+    username = "SamLubelsky"
+    return render_template("home_page.html", viewable_pages = db_tools.get_user_stories(username))
+    
     
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified

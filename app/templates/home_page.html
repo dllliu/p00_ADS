@@ -21,8 +21,8 @@
     <p>
        A collection of stories that you can create, edit, view... Stories will be arranged with edit, create, and view button below each orgamized in a column.
     </p>
-    {% for page in viewable_pages %}
-    {{page.storyName}}
+    {% for page in viewable_stories %}
+    {{StoryName}}
     <form action="/view" method = "POST">
        <input type="submit" value="View Story">
     </form>
