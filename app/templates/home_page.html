@@ -36,9 +36,16 @@
     </form>
     {% endfor %}
     <h1> Create A New Story: </h1>
-    <form action="/create" method = "POST">
-        <input type="submit" value="Create Story">
-     </form>
+    
+    <form action="/create_story" method="POST">
+      <input type="text" name="storyName" placeholder="Enter Story Name" >
+        <br>
+        <br>
+      <input type="text" name="NewText" style="height:120px; width:200px;" placeholder="Thou are a scribe, so write!">
+      <br>
+      Confirm New Story Creation: <input type="submit" name="Create Story">
+    </form>
+    
   </body>
 
 </html>
