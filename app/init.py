@@ -78,15 +78,18 @@ def edit():
     #return str(storyInfo)
     lastAdded = storyInfo[1]
     contributors = storyInfo[2].split(",")
+    print(session)
     if 'username' in session and 'password' in session:
         if db_tools.verify_account(session['username'], session['password']):
             if session['username'] not in contributors:
-                resp = render_template('edit.html', storyName = storyName, storyText = lastAdded)
+                return render_template('edit.html', storyName = storyName, storyText = lastAdded)
             else:
-                return redirect("/")
+                return render_template("error.html", msg= "user has already editied story")
         else:
-            return redirect("/")
-    return redirect("/")
+            return render_template("error.html", msg = "username or password not valid")
+    else:
+        return render_template("error.html", msg="user not logged in")
+    return render_template("error.html", msg = "something has gone wrong")
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
     app.debug = True 
