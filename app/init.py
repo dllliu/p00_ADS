@@ -70,7 +70,7 @@ def home():
         print(viewable_pages)
         return render_template("home_page.html", username = username,
         viewable_stories = viewable_pages, editable_stories = editable_pages)
-
+        
 @app.route('/edit')
 def edit():
     storyName = "beeInfo"
@@ -90,6 +90,23 @@ def edit():
     else:
         return render_template("error.html", msg="user not logged in")
     return render_template("error.html", msg = "something has gone wrong")
+    
+        
+@app.route('/create_story', methods=['GET', 'POST'])
+def create_story():
+    username = session['username']
+    storyName = request.form.get('storyName')
+    newText = request.form.get('newText')
+    if request.method == 'POST':
+        if db_tools.add_story(storyName,newText,'ads') != -1:
+            return f"Successfully added {storyName}"
+        else:
+            if db_tools.story_exists(storyName):
+                return "Story Already Added"
+            else:
+                return "Story Addition Not Successful. Try Again"
+
+        
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
     app.debug = True 
