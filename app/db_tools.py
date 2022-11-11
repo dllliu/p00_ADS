@@ -1,4 +1,3 @@
-from re import T
 import sqlite3
 
 DB_FILE = "data.db"

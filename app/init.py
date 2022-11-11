@@ -73,7 +73,7 @@ def home():
         
 @app.route('/edit')
 def edit():
-    storyName = "beeInfo"
+    storyName = request.args.get("storyName")
     storyInfo = db_tools.get_story_info(storyName)
     #return str(storyInfo)
     lastAdded = storyInfo[1]
@@ -89,9 +89,22 @@ def edit():
             return render_template("error.html", msg = "username or password not valid")
     else:
         return render_template("error.html", msg="user not logged in")
-    return render_template("error.html", msg = "something has gone wrong")
-    
-        
+@app.route("/make_edit", methods = ['POST'])
+def make_edit():
+    storyName = request.form.get("storyName")
+    newAddition = request.form.get("NewText")
+    if(verify_session()):
+        db_tools.edit_story(storyName, newAddition, session['username'])
+        return redirect("/")
+    else:
+        return render_template("error.html", msg = "session could not be verified")
+
+def verify_session():
+    if 'username' in session and 'password' in session:
+        if db_tools.verify_account(session['username'], session['password']):
+            return True
+    return False
+
 @app.route('/create_story', methods=['GET', 'POST'])
 def create_story():
     username = session['username']
@@ -105,8 +118,7 @@ def create_story():
                 return "Story Already Added"
             else:
                 return "Story Addition Not Successful. Try Again"
-
-        
+                
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
     app.debug = True 
