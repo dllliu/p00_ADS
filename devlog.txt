@@ -22,3 +22,6 @@ Add requirements and launch codes in read me. Updated file name for app.py accor
 
 SamuelL -- 2022-11-10 21:12
 Made the template and flask functions for /edit.  Also added helper function verify_session() for future use and changed the error template along with the home template
+
+DanielL -- 2022-11-10 22:44
+Modified init.py for /create_story (functions, logic). Create works. Modified home page template so input is taken from the actual home page instead of redirecting. 
