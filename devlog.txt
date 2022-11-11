@@ -25,3 +25,7 @@ Made the template and flask functions for /edit.  Also added helper function ver
 
 DanielL -- 2022-11-10 22:44
 Modified init.py for /create_story (functions, logic). Create works. Modified home page template so input is taken from the actual home page instead of redirecting. 
+
+DanielL -- 2022-11-11 18:29
+Improved display of elements on home page. Finished view and debugged edit. Removed test cases in data.db and replaced with existing stories. Modify story templates for wide applicability. Added return buttons to every template. Tested and found timeout of session after inactivity?
+
