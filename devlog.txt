@@ -29,3 +29,6 @@ Modified init.py for /create_story (functions, logic). Create works. Modified ho
 DanielL -- 2022-11-11 18:29
 Improved display of elements on home page. Finished view and debugged edit. Removed test cases in data.db and replaced with existing stories. Modify story templates for wide applicability. Added return buttons to every template. Tested and found timeout of session after inactivity?
 
+SamuelL -- 2022-11-11 18:34
+Made some minor bug fixes and changes to the html templates
+
