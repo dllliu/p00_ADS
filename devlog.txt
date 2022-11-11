@@ -19,3 +19,6 @@ Made a lot of changes to flask py routing and account handling.  Also fixed up d
 
 DanielL -- 2022-11-09 22:16
 Add requirements and launch codes in read me. Updated file name for app.py according to site.  Login works. Debugged error with closing database.
+
+SamuelL -- 2022-11-10 21:12
+Made the template and flask functions for /edit.  Also added helper function verify_session() for future use and changed the error template along with the home template
