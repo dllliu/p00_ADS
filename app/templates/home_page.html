@@ -24,7 +24,8 @@
     <h1> Your Stories</h1>
     {% for page in viewable_stories %}
     {{page}}
-    <form action="/view" method = "POST">
+    <form action="/view">
+      <input type="hidden" name="storyName" value={{page}}>
        <input type="submit" value="View Story">
     </form>
     {% endfor %}
@@ -32,7 +33,7 @@
     {% for page in editable_stories %}
     {{page}}
     <form action="/edit">
-       <input type ="hidden", name = "storyName", value = {{page}}>
+       <input type ="hidden" name = "storyName" value = {{page}}>
        <input type="submit" value="Edit Story">
     </form>
     {% endfor %}
