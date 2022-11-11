@@ -1,51 +1,54 @@
 <head>
-    <title> HOME PAGE </title>
+    <title> HOME</title>
   </head>
 
   <body>
     <h1>
-      STORY TELLING WITH ADS
+          Welcome, {{username}}!
     </h1>
+    <form action="/logout">
+        <input type="submit" value="logout" />
+    </form>
+    
     <h2>
        There are only three types of people. Scribes, Editors, or Viewers.
     </h2>
 
     <h3>
-        Welcome, {{username}}!
+       Our team at ADS welcomes thou to thy own personal collection of stories that you can create, edit, and view. We hope you find yourself immersed within this vast realm of possibility.
     </h3>
-
-    <form action="/logout">
-        <input type="submit" value="logout" />
-    </form>
-
-    <p>
-       A collection of stories that you can create, edit, view... Stories will be arranged with edit, create, and view button below each orgamized in a column.
-    </p>
+    
     <h1> Your Stories</h1>
     {% for page in viewable_stories %}
-    {{page}}
+    <strong>{{page}}</strong>
+    
     <form action="/view">
       <input type="hidden" name="storyName" value={{page}}>
        <input type="submit" value="View Story">
     </form>
+    
     {% endfor %}
     <h1> New Stories </h1>
     {% for page in editable_stories %}
-    {{page}}
+    <strong>{{page}}</strong>
+    
     <form action="/edit">
        <input type ="hidden" name = "storyName" value = {{page}}>
        <input type="submit" value="Edit Story">
     </form>
-    {% endfor %}
-    <h1> Create A New Story: </h1>
     
+    {% endfor %}
+    
+    <h1> Create A New Story: </h1>
     <form action="/create_story" method="POST">
-      <input type="text" name="storyName" placeholder="Enter Story Name" >
+      <input type="text"name="storyName"placeholder="Enter Story Name" >
         <br>
         <br>
-      <input type="text" name="NewText" style="height:120px; width:200px;" placeholder="Thou are a scribe, so write!">
+    
+      <textarea placeholder="Thou are a scribe, so write!"rows = "8"cols = "60"name = "newText"></textarea>
+      
       <br>
-      Confirm New Story Creation: <input type="submit" name="Create Story">
+      <input type="submit" name="Create Story">
     </form>
     
   </body>

@@ -70,6 +70,14 @@ def home():
         print(viewable_pages)
         return render_template("home_page.html", username = username,
         viewable_stories = viewable_pages, editable_stories = editable_pages)
+
+@app.route('/view')
+def view():
+    storyname = request.args.get("storyName")
+    fullText, author = db_tools.get_story_info(storyname)
+    if db_tools.get_story_info(storyname) == -1:
+        return "Story is Not in Database"
+    return render_template("story_tmplt.html",fullText = fullText,storyname = storyname,author=author)
         
 @app.route('/edit')
 def edit():
@@ -89,6 +97,7 @@ def edit():
             return render_template("error.html", msg = "username or password not valid")
     else:
         return render_template("error.html", msg="user not logged in")
+        
 @app.route("/make_edit", methods = ['POST'])
 def make_edit():
     storyName = request.form.get("storyName")
@@ -112,7 +121,7 @@ def create_story():
     newText = request.form.get('newText')
     if request.method == 'POST':
         if db_tools.add_story(storyName,newText,'ads') != -1:
-            return f"Successfully added {storyName}"
+            return render_template("create.html",storyName = storyName)
         else:
             if db_tools.story_exists(storyName):
                 return "Story Already Added"
