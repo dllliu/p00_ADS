@@ -7,6 +7,7 @@ DB_FILE = "data.db"
 
 stories_header = "(storyName TEXT, fullStory TEXT, lastAdded TEXT, Contributors TEXT)"
 users_header = ("(username TEXT, password TEXT)")
+
 def query(sql, extra = None):
     db = sqlite3.connect(DB_FILE, check_same_thread=False)
     c = db.cursor()
@@ -74,8 +75,18 @@ def get_story_info(storyName):
     storyInfo = get_table_list("StoryInfo")
     for row in storyInfo:
         if row[0] == storyName:
-            return row[1:]
+            fullText = row[1]
+            contributors = row[3]
+            return fullText,contributors #[1:]
     return -1
+    
+def get_story_contents(storyName):
+    storyInfo = get_table_list("StoryInfo")
+    for row in storyInfo:
+        if row[0] == storyName:
+            return row[1]
+    return -1
+    
 #edit story
 def edit_story(storyName, newText, contributor):
     if story_exists(storyName):
