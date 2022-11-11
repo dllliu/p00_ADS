@@ -31,8 +31,8 @@
     <h1> New Stories </h1>
     {% for page in editable_stories %}
     {{page}}
-    <a href = /edit?storyName={{page}}> {{page}} </a>
     <form action="/edit">
+       <input type ="hidden", name = "storyName", value = {{page}}>
        <input type="submit" value="Edit Story">
     </form>
     {% endfor %}

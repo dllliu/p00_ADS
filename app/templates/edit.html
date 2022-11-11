@@ -6,7 +6,8 @@
     <body>
       <h1> Add To {{storyName}}: </h1>
       <p> {{storyText}}</p>  
-      <form action="/addToStory" method="POST">
+      <form action="/make_edit" method="POST">
+        <input type="hidden" name="storyName", value = {{storyName}}>
         New Text: <input type="text" name="NewText">
         <br>
         Confirm Addition: <input type="submit" name="Confirm Addititon">
