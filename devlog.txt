@@ -34,3 +34,6 @@ Made some minor bug fixes and changes to the html templates
 
 DanielL -- 2022-11-11 22:47
 Found bug in edit of app where new users cannot edit to story. Scheduled meetings to update everyone on status of project and check in.
+
+DanielL -- 2022-11-12 18:24
+Found source of bug in edit, quotation marks around a word. Fixed edit HTML template.
