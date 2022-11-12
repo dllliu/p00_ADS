@@ -93,7 +93,7 @@ def edit():
             if session['username'] not in contributors:
                 return render_template('edit.html', storyName = storyName, storyText = lastAdded)
             else:
-                return render_template("error.html", msg= "user has already editied story")
+                return render_template("error.html", msg= "user has already edited story")
         else:
             return render_template("error.html", msg = "username or password not valid")
     else:
@@ -102,7 +102,7 @@ def edit():
 @app.route("/make_edit", methods = ['POST'])
 def make_edit():
     storyName = request.form.get("storyName")
-    newAddition = request.form.get("NewText")
+    newAddition = request.form.get("newText")
     if(verify_session()):
         db_tools.edit_story(storyName, newAddition, session['username'])
         return redirect("/")
