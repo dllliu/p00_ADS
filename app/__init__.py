@@ -73,16 +73,18 @@ def home():
 @app.route('/view')
 def view():
     storyname = request.args.get("storyName")
-    fullText, author = db_tools.get_story_info(storyname)
+    fullText, _, contributors = db_tools.get_story_info(storyname)
     if db_tools.get_story_info(storyname) == -1:
         return "Story is Not in Database"
-    return render_template("story_tmplt.html",fullText = fullText,storyname = storyname,author=author)
-        
+    if verify_session():
+        if session['username'] in contributors.split(','):
+            return render_template("story_tmplt.html",fullText = fullText,storyname = storyname)
+    return render_template("error.html", msg="something went wrong")
 @app.route('/edit')
 def edit():
     storyName = request.args.get("storyName")
     storyInfo = db_tools.get_story_info(storyName)
-    #return str(storyInfo)
+    print(storyInfo)
     lastAdded = storyInfo[1]
     contributors = storyInfo[2].split(",")
     print(session)

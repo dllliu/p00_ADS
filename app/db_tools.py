@@ -75,9 +75,7 @@ def get_story_info(storyName):
     storyInfo = get_table_list("StoryInfo")
     for row in storyInfo:
         if row[0] == storyName:
-            fullText = row[1]
-            contributors = row[3]
-            return fullText,contributors #[1:]
+            return row[1:]
     return -1
     
 def get_story_contents(storyName):
