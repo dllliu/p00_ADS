@@ -32,3 +32,5 @@ Improved display of elements on home page. Finished view and debugged edit. Remo
 SamuelL -- 2022-11-11 18:34
 Made some minor bug fixes and changes to the html templates
 
+DanielL -- 2022-11-11 22:47
+Found bug in edit of app where new users cannot edit to story. Scheduled meetings to update everyone on status of project and check in.
