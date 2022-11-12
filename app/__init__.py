@@ -48,11 +48,10 @@ def create_account():
         if db_tools.add_account(userIn, passIn) == -1:
             return f"account with username {userIn} already exists"
         else:
-            return f"Successfully added {userIn}"
+            return render_template("sign_up_success.html")
             #return redirect("/login")
-
-        return resp
     return redirect(url_for('index'))
+    
 @app.route('/logout')
 def logout():
     # remove the username from the session if it's there
