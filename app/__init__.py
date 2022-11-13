@@ -74,36 +74,33 @@ def home():
 
 @app.route('/view')
 def view():
-    storyname = request.args.get("storyName")
-    #print("storyName: " + storyname)
-    storyInfo = db_tools.get_story_info(storyname)
-    if storyInfo == -1:
-        return "Story is Not in Database"
-    fullText = storyInfo[0]
-    contributors = storyInfo[2]
     if verify_session():
+        storyname = request.args.get("storyName")
+        #print("storyName: " + storyname)
+        storyInfo = db_tools.get_story_info(storyname)
+        if storyInfo == -1:
+            return render_template("error.html", msg="Story is Not in Database")
+        fullText = storyInfo[0]
+        contributors = storyInfo[2]
         if session['username'] in contributors.split(','):
             return render_template("story_tmplt.html",fullText = fullText,storyname = storyname)
-    return render_template("error.html", msg="something went wrong")
+    return render_template("error.html", msg="session could not be verified")
 @app.route('/edit')
 def edit():
-    storyName = request.args.get("storyName")
-    storyInfo = db_tools.get_story_info(storyName)
-    #print(storyInfo)
-    lastAdded = storyInfo[1]
-    contributors = storyInfo[2].split(",")
     #print(session)
-    if 'username' in session and 'password' in session:
-        if db_tools.verify_account(session['username'], session['password']):
-            if session['username'] not in contributors:
-                return render_template('edit.html', storyName = storyName, storyText = lastAdded)
-            else:
-                return render_template("error.html", msg= "user has already edited story")
+    if verify_session():
+        storyName = request.args.get("storyName")
+        storyInfo = db_tools.get_story_info(storyName)
+        #print(storyInfo)
+        lastAdded = storyInfo[1]
+        contributors = storyInfo[2].split(",")
+        if session['username'] not in contributors:
+            return render_template('edit.html', storyName = storyName, storyText = lastAdded)
         else:
-            return render_template("error.html", msg = "username or password not valid")
+            return render_template("error.html", msg= "user has already edited story")
     else:
-        return render_template("error.html", msg="user not logged in")
-        
+        return render_template("error.html", msg="session could not be verified")
+    
 @app.route("/make_edit", methods = ['POST'])
 def make_edit():
     storyName = request.form.get("storyName")
