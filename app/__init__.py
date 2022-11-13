@@ -27,10 +27,12 @@ def login():
         session['username'] = username
         session['password'] = password
         return redirect("/home")
+    elif request.method == 'POST':
+        if request.form['submit_button'] == "Create New Account":
+            return render_template("create_account.html")
     else:
         resp = make_response(render_template('error.html',msg = "username or password is not correct"))
         return resp
-
 
 @app.route('/create_account', methods=['GET', 'POST'])
 def create_account():
@@ -121,7 +123,7 @@ def create_story():
     storyName = request.form.get('storyName')
     newText = request.form.get('newText')
     if request.method == 'POST':
-        if db_tools.add_story(storyName,newText,'ads') != -1:
+        if db_tools.add_story(storyName,newText,username) != -1:
             return render_template("create.html",storyName = storyName)
         else:
             if db_tools.story_exists(storyName):
