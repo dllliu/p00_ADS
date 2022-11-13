@@ -124,10 +124,10 @@ def verify_session():
 
 @app.route('/create_story', methods=['GET', 'POST'])
 def create_story():
-    username = session['username']
-    storyName = request.form.get('storyName')
-    newText = request.form.get('newText')
-    if request.method == 'POST':
+    if verify_session():
+        username = session['username']
+        storyName = request.form.get('storyName')
+        newText = request.form.get('newText')
         if db_tools.add_story(storyName,newText,username) != -1:
             return render_template("create.html",storyName = storyName)
         else:
@@ -135,7 +135,8 @@ def create_story():
                 return "Story Already Added"
             else:
                 return "Story Addition Not Successful. Try Again"
-                
+    else:
+        return render_template("error.html", msg="session could not be verified")
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
     app.debug = True 
