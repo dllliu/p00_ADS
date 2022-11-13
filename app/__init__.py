@@ -41,7 +41,7 @@ def create_account():
         session['username'] = request.form['username']
         return redirect(url_for('index'))
     '''
-    print("creating account")
+    #print("creating account")
     if request.method == 'POST':
         userIn = request.form.get('username')
         passIn = request.form.get('password') 
@@ -75,7 +75,7 @@ def home():
 @app.route('/view')
 def view():
     storyname = request.args.get("storyName")
-    print("storyName: " + storyname)
+    #print("storyName: " + storyname)
     storyInfo = db_tools.get_story_info(storyname)
     if storyInfo == -1:
         return "Story is Not in Database"
@@ -89,10 +89,10 @@ def view():
 def edit():
     storyName = request.args.get("storyName")
     storyInfo = db_tools.get_story_info(storyName)
-    print(storyInfo)
+    #print(storyInfo)
     lastAdded = storyInfo[1]
     contributors = storyInfo[2].split(",")
-    print(session)
+    #print(session)
     if 'username' in session and 'password' in session:
         if db_tools.verify_account(session['username'], session['password']):
             if session['username'] not in contributors:
@@ -109,6 +109,8 @@ def make_edit():
     storyName = request.form.get("storyName")
     newAddition = request.form.get("newText")
     if(verify_session()):
+        print("Editing Story:")
+        print(storyName, newAddition, session['username'])
         db_tools.edit_story(storyName, newAddition, session['username'])
         return redirect("/")
     else:

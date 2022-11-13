@@ -7,7 +7,7 @@
       <h1> Add To {{storyName}}: </h1>
       <p> {{storyText}}</p>  
       <form action="/make_edit" method="POST">
-        <input type="hidden" name="storyName", value = {{storyName}}>
+        <input type="hidden" name="storyName", value = "{{storyName}}">
           <textarea placeholder="Thou are an editor, so edit!"rows = "8"cols = "60"name = "newText"></textarea>
         <br>
         Confirm Addition: <input type="submit" name="Confirm Addititon">
