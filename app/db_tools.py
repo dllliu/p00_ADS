@@ -36,7 +36,7 @@ def get_table_list(tableName):
 #if username already in db returns -1
 def add_account(username, password):
     if not(account_exists(username)):
-        query("INSERT INTO UserInfo (username, password) VALUES (?, ?);", (username, password))
+        query("INSERT INTO UserInfo VALUES (?, ?)", (username, password))
     else:
         return -1
 
@@ -84,12 +84,13 @@ def get_story_contents(storyName):
         if row[0] == storyName:
             return row[1]
     return -1
-    
+            
 #edit story
 def edit_story(storyName, newText, contributor):
     if story_exists(storyName):
         storyInfo = get_story_info(storyName)
-        fullText = storyInfo[0] + newText
+        fullText = storyInfo[0] + newText 
+        print(fullText)
         contributors = contributor + "," + storyInfo[2] 
         query(f'''
         UPDATE storyInfo
