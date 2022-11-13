@@ -1,32 +1,43 @@
-<!DOCTYPE html>
- <html>
- 
-   <head>
-     <title> LOGIN </title>
-   </head>
- 
-   <body>
-     <h1>
-      STORY TELLING WITH ADS
-     </h1>
-     <h2>
-        Pray thee enter thy name and thy word of pass 
-     </h2>
 
-     <form action="/create_account" method= "POST">
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title> LOGIN PAGE </title>
+  </head>
+
+  <body>
+    <h1>
+     STORY TELLING WITH ADS
+    </h1>
+    <h2>
+       Pray thee enter thy name and thy word of pass 
+    </h2>
+   <br>
+
+   <form action="/login" method = "POST">
+       <input type="text" name="username">
+       <input type = "text" name = "password">
+       <input type="submit" value="Log In With Existing Account">
+    </form>  
+
+    <!--
+    <form action="/create_account" method= "POST">
         <input type="text" name="username">
-        <input type = "password" name = "password">
+        <input type = "text" name = "password">
          <input type="submit" value="Create Account" />
      </form>
-   
+    -->
+    <h2> 
+        If you do not have an account, please click below to create one.
+    </h2>
     <br>
+    
+    <form>
+        <a href="create_account.html">
+            <input type="button" value="Create Account" />
+        </a>
+    </form>
+  </body>
 
-    <form action="/login" method = "POST">
-        <input type="text" name="username">
-        <input type = "password" name = "password">
-        <input type="submit" value="Log In With Existing Account">
-     </form>  
-
-   </body>
- 
- </html>
+</html>
