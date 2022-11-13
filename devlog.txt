@@ -43,3 +43,6 @@ Rerouted Create Account page to new page, adding button on login/landing page to
 
 DanielL -- 2022-11-12 18:24
 Added question mark input for some functions in db_tools. Change text=password back in templates.
+
+SamuelL -- 2022-11-13 14:32 
+Did a lot of debugging and error checking.  Tried to ensure flask never displays an error to the browser and they always go to our custom error.html page with an appropriate message to the user explaining the issue.
