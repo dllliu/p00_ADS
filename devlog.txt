@@ -37,3 +37,6 @@ Found bug in edit of app where new users cannot edit to story. Scheduled meeting
 
 DanielL -- 2022-11-12 18:24
 Found source of bug in edit, quotation marks around a word. Fixed edit HTML template.
+
+AymanH -- 2022-11-12 22:28
+Rerouted Create Account page to new page, adding button on login/landing page to redirect to such account creation page. Changed username input for "add_story" in order to track current username rather than just the hardcoded "ads"
