@@ -68,16 +68,19 @@ def home():
     password = session['password']
     if db_tools.verify_account(username, password):
         viewable_pages, editable_pages = db_tools.get_user_stories(username)[0], db_tools.get_user_stories(username)[1]
-        print(viewable_pages)
+        print("viewable pages:" + str(viewable_pages))
         return render_template("home_page.html", username = username,
         viewable_stories = viewable_pages, editable_stories = editable_pages)
 
 @app.route('/view')
 def view():
     storyname = request.args.get("storyName")
-    fullText, _, contributors = db_tools.get_story_info(storyname)
-    if db_tools.get_story_info(storyname) == -1:
+    print("storyName: " + storyname)
+    storyInfo = db_tools.get_story_info(storyname)
+    if storyInfo == -1:
         return "Story is Not in Database"
+    fullText = storyInfo[0]
+    contributors = storyInfo[2]
     if verify_session():
         if session['username'] in contributors.split(','):
             return render_template("story_tmplt.html",fullText = fullText,storyname = storyname)
