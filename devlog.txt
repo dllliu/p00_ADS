@@ -40,3 +40,6 @@ Found source of bug in edit, quotation marks around a word. Fixed edit HTML temp
 
 AymanH -- 2022-11-12 22:28
 Rerouted Create Account page to new page, adding button on login/landing page to redirect to such account creation page. Changed username input for "add_story" in order to track current username rather than just the hardcoded "ads"
+
+DanielL -- 2022-11-12 18:24
+Added question mark input for some functions in db_tools. Change text=password back in templates.
