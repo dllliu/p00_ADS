@@ -8,5 +8,4 @@ Launch Codes
  * Run  ```python __init__.py ``` and access the localhost
  * Login or Create Account
  * Create, Edit, or View Stories!
- * There is a prexisting account that can be logged into:
- * Username: ads, password: admin
+ * There is a prexisting account that can be logged into: Username: ads, password: admin
