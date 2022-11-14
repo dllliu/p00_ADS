@@ -94,12 +94,12 @@ def edit_story(storyName, newText, contributor):
         contributors = contributor + "," + storyInfo[2] 
         query(f'''
         UPDATE storyInfo
-        SET fullStory = "{fullText}",
-        lastAdded = "{newText}",
-        Contributors = "{contributors}"
+        SET fullStory = ?,
+        lastAdded = ?,
+        Contributors = ?
         WHERE
-        storyName = "{storyName}"
-        ''')
+        storyName = ?
+        ''', (fullText, newText, contributors, storyName))
     else:
         return -1
 def get_user_stories(username):

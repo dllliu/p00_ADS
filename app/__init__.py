@@ -103,9 +103,9 @@ def edit():
     
 @app.route("/make_edit", methods = ['POST'])
 def make_edit():
-    storyName = request.form.get("storyName")
-    newAddition = request.form.get("newText")
-    if(verify_session()):
+    if verify_session():
+        storyName = request.form.get("storyName")
+        newAddition = request.form.get("newText")
         print("Editing Story:")
         print(storyName, newAddition, session['username'])
         db_tools.edit_story(storyName, newAddition, session['username'])
