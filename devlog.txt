@@ -46,3 +46,6 @@ Added question mark input for some functions in db_tools. Change text=password b
 
 SamuelL -- 2022-11-13 14:32 
 Did a lot of debugging and error checking.  Tried to ensure flask never displays an error to the browser and they always go to our custom error.html page with an appropriate message to the user explaining the issue.
+
+SamuelL -- 2022-11-14 14:45
+Fixed bugs relating to sql calls not using wildcards and flask errors.
