@@ -49,3 +49,6 @@ Did a lot of debugging and error checking.  Tried to ensure flask never displays
 
 SamuelL -- 2022-11-14 14:45
 Fixed bugs relating to sql calls not using wildcards and flask errors.
+
+SamuelL -- 2022-11-14 14:45
+Cloned repo and tested as if I was mykolyk, everything seems to be working.  Updated the readme
