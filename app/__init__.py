@@ -27,9 +27,8 @@ def login():
         session['username'] = username
         session['password'] = password
         return redirect("/home")
-    elif request.method == 'POST':
-        if request.form['submit_button'] == "Create New Account":
-            return render_template("create_account.html")
+    if request.form.get('submit_button') is not None:
+        return render_template("create_account.html")
     else:
         resp = make_response(render_template('error.html',msg = "username or password is not correct"))
         return resp
@@ -106,8 +105,6 @@ def make_edit():
     if verify_session():
         storyName = request.form.get("storyName")
         newAddition = request.form.get("newText")
-        print("Editing Story:")
-        print(storyName, newAddition, session['username'])
         db_tools.edit_story(storyName, newAddition, session['username'])
         return redirect("/")
     else:
