@@ -1,54 +1,114 @@
-DanielL -- 2022-11-02 20:17
+ADS
+Daniel Liu
+Sam Lubelsky
+Ayman Habib
+pd 2
+---------------------
+A collaborative story-telling website in which users are able to create, edit, and view to explore a world of immense possibility.
+
+
+ ______   ______   __   __   __       ______   _______     
+/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
+\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  
+ \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\ 
+  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/ 
+   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
+    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/ 
+==============================================================
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+DanielL -- 2022-11-02 20:17:
+--------------------------------------------------------------
 Initialized submodule with all necessary materials like flag and file structure. Update structure of HTML table leading to content page in Design Doc based on suggestions. 
 More detailed description of updating data.
+==============================================================
 
-DanielL -- 2022-11-07 09:55
+DanielL -- 2022-11-07 09:55:
+--------------------------------------------------------------
 Make HTML Templates for Login, Response, and Story Template. 
+==============================================================
 
-SamuelL -- 2022-11-08 16:38
+SamuelL -- 2022-11-08 16:38:
+--------------------------------------------------------------
 Merged my devTools branch with main.  The db_tools.py file now contains all the functions necessary for reading and writing to the sqlite database.  The database should be read and written to using solely these functions.  They seem to be fully working based on my tests.
+==============================================================
 
-SamuelL -- 2022-11-09 9:51
+SamuelL -- 2022-11-09 9:51:
+--------------------------------------------------------------
 Added More to db_tools.py.  Added some routing in __init__ and created and edited some of our html templates.
+==============================================================
 
-SamuelL -- 2022-11-09 19:23
+SamuelL -- 2022-11-09 19:23:
+--------------------------------------------------------------
 Worked on homepage html template and flask routing for homepage.  Is mostly working now though it lacks integration with user account systems.
+==============================================================
 
-SamuelL -- 2022-11-09 21:12
+SamuelL -- 2022-11-09 21:12:
+--------------------------------------------------------------
 Made a lot of changes to flask py routing and account handling.  Also fixed up db_tools.py and changed how database access is managed
+==============================================================
 
-DanielL -- 2022-11-09 22:16
+DanielL -- 2022-11-09 22:16:
+--------------------------------------------------------------
 Add requirements and launch codes in read me. Updated file name for app.py according to site.  Login works. Debugged error with closing database.
+==============================================================
 
-SamuelL -- 2022-11-10 21:12
+SamuelL -- 2022-11-10 21:12:
+--------------------------------------------------------------
 Made the template and flask functions for /edit.  Also added helper function verify_session() for future use and changed the error template along with the home template
+==============================================================
 
-DanielL -- 2022-11-10 22:44
+DanielL -- 2022-11-10 22:44:
+--------------------------------------------------------------
 Modified init.py for /create_story (functions, logic). Create works. Modified home page template so input is taken from the actual home page instead of redirecting. 
+==============================================================
 
-DanielL -- 2022-11-11 18:29
+DanielL -- 2022-11-11 18:29:
+--------------------------------------------------------------
 Improved display of elements on home page. Finished view and debugged edit. Removed test cases in data.db and replaced with existing stories. Modify story templates for wide applicability. Added return buttons to every template. Tested and found timeout of session after inactivity?
+==============================================================
 
-SamuelL -- 2022-11-11 18:34
+SamuelL -- 2022-11-11 18:34:
+--------------------------------------------------------------
 Made some minor bug fixes and changes to the html templates
+==============================================================
 
-DanielL -- 2022-11-11 22:47
+DanielL -- 2022-11-11 22:47:
+--------------------------------------------------------------
 Found bug in edit of app where new users cannot edit to story. Scheduled meetings to update everyone on status of project and check in.
+==============================================================
 
-DanielL -- 2022-11-12 18:24
+DanielL -- 2022-11-12 18:24:
+--------------------------------------------------------------
 Found source of bug in edit, quotation marks around a word. Fixed edit HTML template.
+==============================================================
 
-AymanH -- 2022-11-12 22:28
+AymanH -- 2022-11-12 22:28:
+--------------------------------------------------------------
 Rerouted Create Account page to new page, adding button on login/landing page to redirect to such account creation page. Changed username input for "add_story" in order to track current username rather than just the hardcoded "ads"
+==============================================================
 
-DanielL -- 2022-11-12 18:24
+DanielL -- 2022-11-12 18:24:
+--------------------------------------------------------------
 Added question mark input for some functions in db_tools. Change text=password back in templates.
+==============================================================
 
-SamuelL -- 2022-11-13 14:32 
+SamuelL -- 2022-11-13 14:32:
+--------------------------------------------------------------
 Did a lot of debugging and error checking.  Tried to ensure flask never displays an error to the browser and they always go to our custom error.html page with an appropriate message to the user explaining the issue.
+==============================================================
 
-SamuelL -- 2022-11-14 14:45
+SamuelL -- 2022-11-14 14:45:
+--------------------------------------------------------------
 Fixed bugs relating to sql calls not using wildcards and flask errors.
+==============================================================
 
-SamuelL -- 2022-11-14 14:45
+SamuelL -- 2022-11-14 14:45:
+--------------------------------------------------------------
 Cloned repo and tested as if I was mykolyk, everything seems to be working.  Updated the readme
+==============================================================
+
+DanielL -- 2022-11-14 22:21:
+--------------------------------------------------------------
+Added updated readme and devlog. Add updated design. Add stories.
+==============================================================
