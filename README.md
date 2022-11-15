@@ -14,4 +14,4 @@ Upon creating, users will be able to give your story a title. When editing, user
  * Create, Edit, or View Stories!
  * There are multiple pre-existing accounts to test. The usernames for each account are **ads, ads1, ads2, ads3**
  * The password for each is **admin**
- * **ads** was used to create the story **By the Bay**, **ads1** was used to edit it. Use the remaining accounts to test edit/view.
+ * **ads** was used to create the story **By the Bay and The Tale of Woe** and **ads1** was used to edit **The Tale of Woe**. Use the remaining accounts to test edit/view.
