@@ -111,4 +111,12 @@ Cloned repo and tested as if I was mykolyk, everything seems to be working.  Upd
 DanielL -- 2022-11-14 22:21:
 --------------------------------------------------------------
 Added updated readme and devlog. Add updated design. Add stories.
+
+Our feedback for design_wiki0.pdf and design_wiki1.pdf was to make sure our database contains everything that is necessary to get the site working. We did not actually need time stamps
+or to keep track of the email address of the user. 
+
+Revisions since v0 in design.pdf: 
+Updated database structure based on feedback by FERRARI about keeping track of new user input to add to an existing story's text.
+Clarified each template and detailed descriptions of the various components making up our site. Clarified each developer's role. Cleaned up and included features we added since our initial ponderings like 
+multi-line input, placeholder text, separate pages for log-in and create, and sample stories.
 ==============================================================
